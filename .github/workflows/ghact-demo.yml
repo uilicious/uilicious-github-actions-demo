@@ -1,27 +1,30 @@
 name: Github Actions Example
 on:
   push:
-    branches: [ main, master ]
+    branches:
+      - main
+      - master
   pull_request:
-    branches: [ main, master ]
+    branches:
+      - main
+      - master
 jobs:
   action-with-testfiles:
     runs-on: ubuntu-latest
     steps:
-    - uses: omairvaiyani/ghact-uilicious@v1
-      with:
-        access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
-        project: github-actions-demo
-        tests: hello-github, uilicious-cli
-        browser: chrome
-  
+      - uses: omairvaiyani/ghact-uilicious@v1
+        with:
+          access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
+          project: github-actions-demo
+          tests: hello-github, uilicious-cli
+          browser: chrome
   test-wildcard:
     runs-on: ubuntu-latest
     steps:
-    - uses: omairvaiyani/ghact-uilicious@v1
-      with:
-        access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
-        project: github-actions-demo
-        tests: "hello-*", "*-cli"
-        browser: chrome
-        pattern: true
+      - uses: omairvaiyani/ghact-uilicious@v1
+        with:
+          access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
+          project: github-actions-demo
+          tests: hello-*
+          browser: chrome
+          pattern: true
