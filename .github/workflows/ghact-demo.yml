@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
-  build:
+  test-multiples:
     runs-on: ubuntu
     steps:
     - uses: omairvaiyani/ghact-uilicious@v1
@@ -13,3 +13,14 @@ jobs:
         access-key: ${{ secrets.UILICIOUS_ACCESS_KEY }}
         project: github-actions-demo
         tests: hello-github, uilicious-cli
+        browser: chrome
+  test-wildcard:
+    runs-on: ubuntu
+    steps:
+    - uses: omairvaiyani/ghact-uilicious@v1
+      with:
+        access-key: ${{ secrets.UILICIOUS_ACCESS_KEY }}
+        project: github-actions-demo
+        tests: "hello-*", "*-cli"
+        browser: chrome
+        pattern: true
