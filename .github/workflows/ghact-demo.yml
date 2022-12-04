@@ -17,7 +17,6 @@ jobs:
           access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
           project: github-actions-demo
           tests: hello-github
-          browser: chrome
   test-wildcard:
     runs-on: ubuntu-latest
     steps:
@@ -26,5 +25,4 @@ jobs:
           access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
           project: github-actions-demo
           tests: hello-*
-          browser: chrome
           pattern: true
