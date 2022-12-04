@@ -1,0 +1,15 @@
+name: Github Actions Example
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  build:
+    runs-on: ubuntu
+  steps:
+    - uses: omairvaiyani/ghact-uilicious@v1
+      with:
+        access-key: ${{ secrets.UILICIOUS_ACCESS_KEY }}
+        project: github-actions-demo
+        tests: hello-github, uilicious-cli
