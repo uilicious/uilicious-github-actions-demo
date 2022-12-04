@@ -32,9 +32,10 @@ jobs:
         run: npm install -g uilicious-cli
       - name: Run a single test
         run: |
-          uilicious-cli run "github-actions-demo" "hello-github" --browser chrome &
-          uilicious-cli run "github-actions-demo" "hello-github" --browser firefox &
-          uilicious-cli run "github-actions-demo" "hello-github" --browser edge &
+          uilicious-cli run "github-actions-demo" "hello-github" --browser chrome > chrome-result.txt &
+          uilicious-cli run "github-actions-demo" "hello-github" --browser firefox > firefox-result.txt &
+          uilicious-cli run "github-actions-demo" "hello-github" --browser edge > edge-result.txt &
           wait
+          cat ./*-result.txt
         env:
           UILICIOUS_ACCESSKEY: ${{ secrets.UILICIOUS_ACCESSKEY }}
