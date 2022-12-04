@@ -30,7 +30,7 @@ jobs:
           node-version: '12.x'
       - name: Install the CLI
         run: npm install -g uilicious-cli
-      - name: Run a single test
+      - name: Run multiple test concurrently
         run: |
           uilicious-cli run "github-actions-demo" "hello-github" --browser chrome > chrome-result.txt &
           uilicious-cli run "github-actions-demo" "hello-github" --browser firefox > firefox-result.txt &
