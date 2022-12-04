@@ -12,7 +12,7 @@ jobs:
   action-with-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: omairvaiyani/ghact-uilicious@v1
+      - uses: omairvaiyani/ghact-uilicious@v1.2.0
         with:
           access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
           project: github-actions-demo
@@ -21,7 +21,7 @@ jobs:
   test-wildcard:
     runs-on: ubuntu-latest
     steps:
-      - uses: omairvaiyani/ghact-uilicious@v1
+      - uses: omairvaiyani/ghact-uilicious@v1.2.0
         with:
           access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
           project: github-actions-demo
