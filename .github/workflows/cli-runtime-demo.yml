@@ -16,5 +16,5 @@ jobs:
       - name: Install the CLI
         run: npm install -g uilicious-cli
       - name: Run a single test
-        run: uilicious-cli run "github-actions-demo" "hello-github" --browser chrome
+        run: uilicious-cli run "github-actions-demo" "hello-github" --browser chrome --key ${{ secrets.UILICIOUS_ACCESSKEY }}
   
