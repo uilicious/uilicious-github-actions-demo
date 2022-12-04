@@ -8,10 +8,20 @@ jobs:
   action-with-testfiles:
     runs-on: ubuntu-latest
     steps:
-    - uses: omairvaiyani/ghact-uilicious@v1
-      with:
-        access-key: ${{ secrets.UILICIOUS_ACCESS_KEY }}
-        project: github-actions-demo
-        tests: hello-github, uilicious-cli
-        browser: chrome
+      - uses: omairvaiyani/ghact-uilicious@v1
+        with:
+          access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
+          project: github-actions-demo
+          tests: hello-github, uilicious-cli
+          browser: chrome
   
+  test-wildcard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: omairvaiyani/ghact-uilicious@v1
+        with:
+          access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
+          project: github-actions-demo
+          tests: "hello-*", "*-cli"
+          browser: chrome
+          pattern: true
