@@ -36,5 +36,5 @@ jobs:
           uilicious-cli run "github-actions-demo" "hello-github" --browser firefox &
           uilicious-cli run "github-actions-demo" "hello-github" --browser edge &
           wait
-        use:
+        env:
           UILICIOUS_ACCESSKEY: ${{ secrets.UILICIOUS_ACCESSKEY }}
