@@ -9,14 +9,14 @@ on:
       - main
       - master
 jobs:
-  action-with-testfiles:
+  action-with-test:
     runs-on: ubuntu-latest
     steps:
       - uses: omairvaiyani/ghact-uilicious@v1
         with:
           access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
           project: github-actions-demo
-          tests: hello-github, uilicious-cli
+          tests: hello-github
           browser: chrome
   test-wildcard:
     runs-on: ubuntu-latest

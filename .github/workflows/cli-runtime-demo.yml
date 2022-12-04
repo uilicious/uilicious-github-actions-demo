@@ -20,3 +20,21 @@ jobs:
           uilicious-cli run "github-actions-demo" "hello-github" \
             --browser chrome \
             --key ${{ secrets.UILICIOUS_ACCESSKEY }}
+  action-with-env-and-multiple-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '12.x'
+      - name: Install the CLI
+        run: npm install -g uilicious-cli
+      - name: Run a single test
+        run: |
+          uilicious-cli run "github-actions-demo" "hello-github" --browser chrome &
+          uilicious-cli run "github-actions-demo" "hello-github" --browser firefox &
+          uilicious-cli run "github-actions-demo" "hello-github" --browser edge &
+          wait
+        use:
+          UILICIOUS_ACCESSKEY: ${{ secrets.UILICIOUS_ACCESSKEY }}
