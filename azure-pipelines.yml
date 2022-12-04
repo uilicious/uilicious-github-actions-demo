@@ -20,5 +20,5 @@ steps:
 - script: |
     uilicious-cli run "github-actions-demo" "hello-github" \
       --browser chrome \
-      --key ${UILICIOUS_ACCESSKEY}
+      --key $(UILICIOUS_ACCESSKEY)
   displayName: 'Run test script'
