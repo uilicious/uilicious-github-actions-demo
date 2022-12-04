@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu
   steps:
-    - uses: omairvaiyani/ghact-uilicious@v1
-      with:
-        access-key: ${{ secrets.UILICIOUS_ACCESS_KEY }}
-        project: github-actions-demo
-        tests: hello-github, uilicious-cli
+  - uses: omairvaiyani/ghact-uilicious@v1
+    with:
+      access-key: ${{ secrets.UILICIOUS_ACCESS_KEY }}
+      project: github-actions-demo
+      tests: hello-github, uilicious-cli
