@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
-  action-with-testfiles:
+  cli-with-testfiles:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,7 +20,23 @@ jobs:
           uilicious-cli run "github-actions-demo" "hello-github" \
             --browser chrome \
             --key ${{ secrets.UILICIOUS_ACCESSKEY }}
-  action-with-env-and-multiple-tests:
+  cli-with-local-testfiles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '12.x'
+      - name: Install the CLI
+        run: npm install -g uilicious-cli
+      - name: Run a single test
+        run: |
+          uilicious-cli run "github-actions-demo" "hello-github" \
+            --browser chrome \
+            --testCodeDir ./ui-test \
+            --key ${{ secrets.UILICIOUS_ACCESSKEY }}
+  cli-with-env-and-multiple-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
