@@ -10,7 +10,7 @@ Repository: https://github.com/omairvaiyani/ghact-uilicious
 It includes various enhancments, to improve ease of setup and use.
 
 Example script:
-```
+```.yml
 name: Github Actions Example
 on:
   push:
