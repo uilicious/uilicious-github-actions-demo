@@ -5,9 +5,11 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
+  # Running a single test file
   cli-with-testfiles:
     runs-on: ubuntu-latest
     steps:
+      # Repository checkout, node.js install, and cli install
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -15,14 +17,17 @@ jobs:
           node-version: '12.x'
       - name: Install the CLI
         run: npm install -g uilicious-cli
+      # Actual cli run
       - name: Run a single test
         run: |
           uilicious-cli run "github-actions-demo" "hello-github" \
             --browser chrome \
             --key ${{ secrets.UILICIOUS_ACCESSKEY }}
+  # Running using files local in your repository
   cli-with-local-testfiles:
     runs-on: ubuntu-latest
     steps:
+      # Repository checkout, node.js install, and cli install
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -30,15 +35,18 @@ jobs:
           node-version: '12.x'
       - name: Install the CLI
         run: npm install -g uilicious-cli
+      # Actual cli run
       - name: Run a single test
         run: |
           uilicious-cli run "github-actions-demo" "hello-github" \
             --browser chrome \
             --testCodeDir ./ui-test \
             --key ${{ secrets.UILICIOUS_ACCESSKEY }}
+  # Running multiple tests in parallel
   cli-with-env-and-multiple-tests:
     runs-on: ubuntu-latest
     steps:
+      # Repository checkout, node.js install, and cli install
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -46,6 +54,7 @@ jobs:
           node-version: '12.x'
       - name: Install the CLI
         run: npm install -g uilicious-cli
+      # Actual cli run
       - name: Run multiple test concurrently
         run: |
           uilicious-cli run "github-actions-demo" "hello-github" --browser chrome > chrome-result.txt &

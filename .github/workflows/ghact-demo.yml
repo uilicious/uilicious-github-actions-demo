@@ -9,6 +9,7 @@ on:
       - main
       - master
 jobs:
+  # Run a single test file
   action-with-test:
     runs-on: ubuntu-latest
     steps:
@@ -17,6 +18,7 @@ jobs:
           access-key: ${{ secrets.UILICIOUS_ACCESSKEY }}
           project: github-actions-demo
           tests: hello-github
+  # Run a multiple test file using a wildcard
   test-wildcard:
     runs-on: ubuntu-latest
     steps:
